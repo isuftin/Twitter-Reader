@@ -46,6 +46,7 @@ public class TwitterClient {
      */
     public synchronized void start(Boolean autoStartQueue) {
         if (!isConnected && !isStopped) {
+            logger.info("Twitter client starting");
             client.connect();
             isConnected = true;
 

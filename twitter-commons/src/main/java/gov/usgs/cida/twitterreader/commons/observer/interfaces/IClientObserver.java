@@ -1,7 +1,6 @@
 package gov.usgs.cida.twitterreader.commons.observer.interfaces;
 
 import com.twitter.hbc.core.event.Event;
-import java.util.Observer;
 
 /**
  *

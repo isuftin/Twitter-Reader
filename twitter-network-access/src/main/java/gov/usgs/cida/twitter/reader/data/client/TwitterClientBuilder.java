@@ -61,7 +61,7 @@ public class TwitterClientBuilder {
         endpoint.locations(context.getLocations());
         
         ClientBuilder cb = new ClientBuilder().
-                name("Twitter-Client").
+                name("Twitter Client").
                 hosts(Constants.SITESTREAM_HOST).
                 authentication(context.getAuth()).
                 endpoint(endpoint).

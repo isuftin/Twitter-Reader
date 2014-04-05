@@ -19,7 +19,7 @@ public abstract class EventObserver extends ClientObserver {
 
     @Override
     public void handleEvent(String messageObject) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Event handler does not handle String.class");
     }
 
 }

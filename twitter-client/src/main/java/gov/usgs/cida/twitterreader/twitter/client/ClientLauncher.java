@@ -160,8 +160,8 @@ public class ClientLauncher {
 
         if (processedCommandline && (client == null || TwitterClient.isStopped())) {
             ClientBuilder clientBuilder = new ClientBuilder(authType)
-                    .addObserver(new LoggingEventObserver())
-                    .addObserver(new LoggingMessageObserver())
+                    .addObserver(new LoggingEventObserver(logger))
+                    .addObserver(new LoggingMessageObserver(logger))
                     .setUserIds(userIds)
                     .setTerms(terms)
                     .setLocations(locations)
@@ -249,8 +249,10 @@ public class ClientLauncher {
             throw new IllegalArgumentException("Required: OAuth credentials or Simple Authentication credentials");
         } else if (oauth) {
             this.authType = new OAuth(this.oauthConsumerKey, this.oauthConsumerSecret, this.oauthToken, this.oauthSecret);
+            logger.debug(String.format("Client launcher using consumer key %s for authentication", this.oauthConsumerKey ));
         } else {
-            this.authType = new UserPasswordAuth(simpleUsername, simplePassword);
+            this.authType = new UserPasswordAuth(this.simpleUsername, this.simplePassword);
+            logger.debug(String.format("Client launcher using username %s for authentication",  this.simpleUsername));
         }
 
         if (properties.containsKey("logging.use")) {

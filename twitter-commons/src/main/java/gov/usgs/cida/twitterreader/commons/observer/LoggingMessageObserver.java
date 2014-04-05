@@ -18,7 +18,7 @@ public class LoggingMessageObserver extends MessageObserver {
      * Creates a LoggingEventObserver with a default logger
      */
     public LoggingMessageObserver() {
-        logger = (Logger) LoggerFactory.getLogger(LoggingEventObserver.class);
+        this((Logger) LoggerFactory.getLogger(LoggingEventObserver.class));
     }
 
     /**
@@ -35,7 +35,7 @@ public class LoggingMessageObserver extends MessageObserver {
 
     @Override
     public void handleEvent(String messageObject) {
-        logger.info("Incoming Message: " + messageObject);
+        logger.info(String.format("Incoming Message: %s", messageObject));
     }
 
     /**

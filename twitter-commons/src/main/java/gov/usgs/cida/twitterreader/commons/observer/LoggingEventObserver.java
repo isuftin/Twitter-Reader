@@ -3,7 +3,6 @@ package gov.usgs.cida.twitterreader.commons.observer;
 import ch.qos.logback.classic.Logger;
 import com.twitter.hbc.core.event.Event;
 import gov.usgs.cida.twitterreader.commons.queue.TwitterQueues;
-import java.util.Observable;
 import org.slf4j.LoggerFactory;
 
 /**
@@ -19,7 +18,7 @@ public class LoggingEventObserver extends EventObserver {
      * Creates a LoggingEventObserver with a default logger
      */
     public LoggingEventObserver() {
-        logger = (Logger) LoggerFactory.getLogger(LoggingEventObserver.class);
+       this((Logger) LoggerFactory.getLogger(LoggingEventObserver.class));
     }
 
     /**
@@ -36,8 +35,8 @@ public class LoggingEventObserver extends EventObserver {
 
     @Override
     public void handleEvent(Event event) {
-        logger.info("New incoming Twitter event: " + event.getMessage());
-    }
+        logger.info(String.format("Incoming Twitter Event: %s",  event.getMessage()));
+    } 
 
     /**
      * Register this object to the event bus

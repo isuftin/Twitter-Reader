@@ -217,6 +217,7 @@ public class TwitterQueues {
         // Try to unregister observer. If not registered, no biggie
         unregisterObserver(observer);
         eventBus.register(observer);
+        logger.info("Registered observer" + observer.toString());
     }
 
     public static void unregisterObserver(IClientObserver observer) {
